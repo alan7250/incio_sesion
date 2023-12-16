@@ -1,0 +1,45 @@
+{% include("cabecera.html") %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+  .caja {
+    margin: 2%;
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+  .t {
+    font-family: 'Lobster', cursive;
+  }
+</style>
+<link rel="stylesheet" href="listar_usuarios">
+
+{% if usuarios %}
+  <h1 class="text-center t">Lista de Usuarios</h1>
+  <div class="caja">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Nº</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mostrar in usuarios %}
+        <tr>
+          <th scope="row">{{ mostrar.id }}</th>
+          <td>{{ mostrar.correo }}</td>
+          <td>{{ mostrar.password }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Agrega un botón o enlace para mostrar el JSON -->
+    <button onclick="mostrarJSON()">Mostrar JSON</button>
+    <pre id="jsonContainer"></pre>
+
+  </div>
+{% else %}
+  <p>no hay datos</p>
+{% endif %}
